@@ -31,8 +31,7 @@ HEADERS += \
         MainWindow.h
 
 FORMS += \
-        MainWindow.ui \
-    AdditionalSoundWidget.ui
+        MainWindow.ui
 
 RESOURCES += \
     icons.qrc
