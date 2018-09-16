@@ -25,10 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        MainWindow.cpp
+    AppStrings.cpp \
+    view/SoundSelectionDialog.cpp \
+    view/MainWindow.cpp \
+    model/AmbianceModel.cpp
 
 HEADERS += \
-        MainWindow.h
+    AppStrings.h \
+    view/SoundSelectionDialog.h \
+    view/MainWindow.h \
+    model/AmbianceModel.h
 
 FORMS += \
         MainWindow.ui

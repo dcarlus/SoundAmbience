@@ -83,7 +83,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>No file selected yet...</string>
+             <string>$FILE_PATH</string>
             </property>
            </widget>
           </item>
@@ -167,7 +167,7 @@
                <x>0</x>
                <y>0</y>
                <width>600</width>
-               <height>152</height>
+               <height>302</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -183,6 +183,13 @@
               <property name="bottomMargin">
                <number>0</number>
               </property>
+              <item>
+               <widget class="QListWidget" name="additionalSoundsListWidget">
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
            </widget>
@@ -215,9 +222,16 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QPushButton" name="addSoundButton">
+        <widget class="QPushButton" name="addSoundsButton">
          <property name="text">
-          <string>Add a sound</string>
+          <string>Add sounds</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="removeSoundButton">
+         <property name="text">
+          <string>Remove sound</string>
          </property>
         </widget>
        </item>
