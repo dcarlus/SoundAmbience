@@ -13,6 +13,6 @@ Notice that the additional sounds should be in mono format. Otherwise, you could
 For now, Sound Ambience can only be compiled on Windows systems. In the future, it should be available on Linux systems.
 
 Requirements:
-- Qt5.10
-- OpenAL 1.1
-- libsndfile
+- Qt5.10 https://www.qt.io/
+- OpenAL 1.1 https://www.openal.org/
+- libsndfile http://www.mega-nerd.com/libsndfile/
