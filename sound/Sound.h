@@ -22,6 +22,11 @@ class Sound final
         ALuint m_sampleRate = 0;
 
         ///
+        /// \brief  Duration of the sound in seconds.
+        ///
+        int32_t m_duration = 0;
+
+        ///
         /// \brief  Format of the sound (mono or stereo).
         ///
         ALenum m_format = 0;
@@ -53,6 +58,12 @@ class Sound final
         /// \return Buffer of the sound.
         ///
         ALuint buffer() const { return m_buffer; }
+
+        ///
+        /// \brief  Get the duration of the sound in seconds.
+        /// \return Duration of the sound in seconds.
+        ///
+        int32_t duration() const { return m_duration; }
 
     private:
         ///

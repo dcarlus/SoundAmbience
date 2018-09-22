@@ -58,7 +58,8 @@ HEADERS += \
     sound/Sound.h \
     sound/SoundSource.h \
     sound/Ambiance.h \
-    sound/AmbianceThread.h
+    sound/AmbianceThread.h \
+    sound/SoundSourceParameters.h
 
 FORMS += \
     MainWindow.ui

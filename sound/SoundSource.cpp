@@ -1,4 +1,6 @@
 #include "SoundSource.h"
+#include <QDateTime>
+#include <QRandomGenerator>
 
 SoundSource::SoundSource(const QString& soundPath)
 {
@@ -7,6 +9,12 @@ SoundSource::SoundSource(const QString& soundPath)
 
     // Attach the sound buffer to the source.
     alSourcei(m_source, AL_BUFFER, m_sound -> buffer());
+}
+
+SoundSource::SoundSource(const SoundSourceParameters& params)
+    : SoundSource(params.SoundPath)
+{
+    m_id = params.ID;
 }
 
 SoundSource::~SoundSource()
@@ -18,6 +26,19 @@ SoundSource::~SoundSource()
 
 void SoundSource::play()
 {
+    qint64 currentTimestamp = QDateTime::currentDateTime().toSecsSinceEpoch();
+
+    if (m_nextPlayTime > currentTimestamp)
+    {
+        return;
+    }
+
+    m_lastPlayedTime = currentTimestamp;
+
+    ALdouble randomExtraPauseRatio = QRandomGenerator::global() -> generateDouble();
+    int32_t duration = m_sound -> duration();
+    m_nextPlayTime = m_lastPlayedTime + duration + (duration * randomExtraPauseRatio);
+
     alSourcePlay(m_source);
 }
 

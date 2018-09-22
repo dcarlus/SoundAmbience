@@ -6,6 +6,7 @@
 #include "SoundSource.h"
 #include "Sound.h"
 
+#include <QList>
 #include <vector>
 #include <memory>
 
@@ -36,6 +37,11 @@ class Ambiance final
         ///
         std::vector<std::unique_ptr<SoundSource>> m_additionalSources;
 
+        ///
+        /// \brief  ID of sources that are free to be played.
+        ///
+        QList<int32_t> m_availableSources;
+
     public:
         ///
         /// \brief  Create a new sound ambiance.
@@ -44,9 +50,14 @@ class Ambiance final
         Ambiance(const AmbianceModel& model);
 
         ///
-        /// \brief  Play the sound ambiance.
+        /// \brief  Play the main loop of the sound ambiance.
         ///
-        void play();
+        void playMainLoopSound();
+
+        ///
+        /// \brief  Randomly play an additional sound.
+        ///
+        void playAdditionalSound();
 
         ///
         /// \brief  Stop the sound ambiance.
@@ -57,6 +68,12 @@ class Ambiance final
         /// \brief  Check if the sound ambiance is playing.
         ///
         bool isPlaying() const;
+
+    private:
+        ///
+        /// \brief  Put back sounds that have finished to play as available.
+        ///
+        void restorePlayedSounds();
 };
 
 #endif // AMBIANCE_H

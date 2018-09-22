@@ -2,6 +2,7 @@
 #include "AppStrings.h"
 #include <sndfile.h>
 #include <stdexcept>
+#include <QDebug>
 
 Sound::Sound(const QString& filepath)
 {
@@ -31,6 +32,7 @@ void Sound::readFile(const QString& filepath)
     // Get sound informations (samples count and rate).
     m_samplesCount = static_cast<ALuint>(fileInfos.channels * fileInfos.frames);
     m_sampleRate = static_cast<ALuint>(fileInfos.samplerate);
+    m_duration = m_samplesCount / m_sampleRate;
 
     // Get samples.
     m_samples.resize(m_samplesCount);
