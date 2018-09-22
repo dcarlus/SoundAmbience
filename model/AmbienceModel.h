@@ -1,5 +1,5 @@
-#ifndef MODELAMBIANCEMODEL_H
-#define MODELAMBIANCEMODEL_H
+#ifndef MODELAMBIENCEMODEL_H
+#define MODELAMBIENCEMODEL_H
 
 #include <QString>
 #include <QStringList>
@@ -8,7 +8,7 @@
 /// \brief  A very simple model implementation bypassing all sugar required by
 ///         Qt because it is quite boring for just some strings!
 ///
-class AmbianceModel final
+class AmbienceModel final
 {
     private:
         ///
@@ -67,4 +67,4 @@ class AmbianceModel final
         const QStringList& additionalSounds() const { return m_additionalSoundPaths; }
 };
 
-#endif // MODELAMBIANCEMODEL_H
+#endif // MODELAMBIENCEMODEL_H

@@ -4,14 +4,14 @@
 #include <QMainWindow>
 #include <QListWidgetItem>
 #include <memory>
-#include "model/AmbianceModel.h"
-#include "sound/AmbianceThread.h"
+#include "model/AmbienceModel.h"
+#include "sound/AmbienceThread.h"
 
 namespace Ui {
     class MainWindow;
 }
 
-class Ambiance;
+class Ambience;
 
 ///
 /// \brief  The main window of the application.
@@ -27,14 +27,14 @@ class MainWindow : public QMainWindow
         Ui::MainWindow* ui;
 
         ///
-        /// \brief  Model of the sound ambiance.
+        /// \brief  Model of the sound ambience.
         ///
-        AmbianceModel m_model ;
+        AmbienceModel m_model ;
 
         ///
-        /// \brief  Thread in which the sound ambiance is played.
+        /// \brief  Thread in which the sound ambience is played.
         ///
-        std::unique_ptr<AmbianceThread> m_thread;
+        std::unique_ptr<AmbienceThread> m_thread;
 
     public:
         ///
@@ -66,9 +66,9 @@ class MainWindow : public QMainWindow
         void makeConnections();
 
         ///
-        /// \brief  Properly stop the sound ambiance thread.
+        /// \brief  Properly stop the sound ambience thread.
         ///
-        void stopAmbianceThread();
+        void stopAmbienceThread();
 };
 
 #endif // MAINWINDOW_H

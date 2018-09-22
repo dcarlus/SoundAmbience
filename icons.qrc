@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>resources/icons/SoundAmbiance_Logo.png</file>
+        <file>resources/icons/SoundAmbience_Logo.png</file>
     </qresource>
 </RCC>

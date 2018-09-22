@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = SoundAmbiance
+TARGET = SoundAmbience
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -42,24 +42,24 @@ SOURCES += \
     AppStrings.cpp \
     view/SoundSelectionDialog.cpp \
     view/MainWindow.cpp \
-    model/AmbianceModel.cpp \
     sound/OpenAL.cpp \
     sound/Sound.cpp \
     sound/SoundSource.cpp \
-    sound/Ambiance.cpp \
-    sound/AmbianceThread.cpp
+    sound/Ambience.cpp \
+    sound/AmbienceThread.cpp \
+    model/AmbienceModel.cpp
 
 HEADERS += \
     AppStrings.h \
     view/SoundSelectionDialog.h \
     view/MainWindow.h \
-    model/AmbianceModel.h \
     sound/OpenAL.h \
     sound/Sound.h \
     sound/SoundSource.h \
-    sound/Ambiance.h \
-    sound/AmbianceThread.h \
-    sound/SoundSourceParameters.h
+    sound/SoundSourceParameters.h \
+    sound/Ambience.h \
+    sound/AmbienceThread.h \
+    model/AmbienceModel.h
 
 FORMS += \
     MainWindow.ui

@@ -1,9 +1,9 @@
-#include "Ambiance.h"
+#include "Ambience.h"
 #include <QRandomGenerator>
 #include <QDebug>
 #include <utility>
 
-Ambiance::Ambiance(const AmbianceModel& model)
+Ambience::Ambience(const AmbienceModel& model)
 {
     m_mainSource = std::make_unique<SoundSource>(model.mainSoundLoopPath());
     m_mainSource -> setLooping(true);
@@ -21,13 +21,13 @@ Ambiance::Ambiance(const AmbianceModel& model)
     }
 }
 
-void Ambiance::playMainLoopSound()
+void Ambience::playMainLoopSound()
 {
     m_isPlaying = true;
     m_mainSource -> play();
 }
 
-void Ambiance::playAdditionalSound()
+void Ambience::playAdditionalSound()
 {
     if (!m_isPlaying)
     {
@@ -69,17 +69,17 @@ void Ambiance::playAdditionalSound()
     m_availableSources.removeAll(m_additionalSources[sourceID] -> id());
 }
 
-void Ambiance::stop()
+void Ambience::stop()
 {
     m_isPlaying = false;
 }
 
-bool Ambiance::isPlaying() const
+bool Ambience::isPlaying() const
 {
     return m_isPlaying;
 }
 
-void Ambiance::restorePlayedSounds()
+void Ambience::restorePlayedSounds()
 {
     for (std::unique_ptr<SoundSource>& source : m_additionalSources)
     {

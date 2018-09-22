@@ -1,6 +1,6 @@
-#include "AmbianceModel.h"
+#include "AmbienceModel.h"
 
-bool AmbianceModel::defineMainSoundLoopPath(const QString& path)
+bool AmbienceModel::defineMainSoundLoopPath(const QString& path)
 {
     bool validPath = !path.isEmpty() && !m_additionalSoundPaths.contains(path);
 
@@ -12,7 +12,7 @@ bool AmbianceModel::defineMainSoundLoopPath(const QString& path)
     return validPath;
 }
 
-bool AmbianceModel::addAdditionalSoundPath(const QString& path)
+bool AmbienceModel::addAdditionalSoundPath(const QString& path)
 {
     bool alreadyInside = m_additionalSoundPaths.contains(path);
     bool alreadyMainLoop = path == m_mainSoundLoopPath;
@@ -25,7 +25,7 @@ bool AmbianceModel::addAdditionalSoundPath(const QString& path)
     return !alreadyInside;
 }
 
-void AmbianceModel::removeAdditionalSoundPath(const int index)
+void AmbienceModel::removeAdditionalSoundPath(const int index)
 {
     if (m_additionalSoundPaths.size() > index)
     {

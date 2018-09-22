@@ -1,7 +1,7 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 #include "SoundSelectionDialog.h"
-#include "sound/Ambiance.h"
+#include "sound/Ambience.h"
 #include "AppStrings.h"
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
@@ -25,7 +25,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent(QCloseEvent*)
 {
-    stopAmbianceThread();
+    stopAmbienceThread();
 }
 
 void MainWindow::updateSoundList()
@@ -137,16 +137,16 @@ void MainWindow::makeConnections()
         }
     );
 
-    // Generate ambiance.
+    // Generate ambience.
     connect
     (
         ui -> generateButton,
         &QPushButton::clicked,
         [=](bool)
         {
-            stopAmbianceThread();
+            stopAmbienceThread();
 
-            m_thread = std::make_unique<AmbianceThread>(m_model);
+            m_thread = std::make_unique<AmbienceThread>(m_model);
             m_thread -> start();
 
             ui -> generateButton -> setDisabled(true);
@@ -154,7 +154,7 @@ void MainWindow::makeConnections()
     );
 }
 
-void MainWindow::stopAmbianceThread()
+void MainWindow::stopAmbienceThread()
 {
     if (m_thread)
     {

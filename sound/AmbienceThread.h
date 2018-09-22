@@ -1,16 +1,16 @@
-#ifndef AMBIANCETHREAD_H
-#define AMBIANCETHREAD_H
+#ifndef AMBIENCETHREAD_H
+#define AMBIENCETHREAD_H
 
-#include "Ambiance.h"
+#include "Ambience.h"
 #include <QThread>
 #include <memory>
 
-class AmbianceModel;
+class AmbienceModel;
 
 ///
-/// \brief  Thread used to play a sound ambiance.
+/// \brief  Thread used to play a sound ambience.
 ///
-class AmbianceThread final : public QThread
+class AmbienceThread final : public QThread
 {
     Q_OBJECT
 
@@ -21,16 +21,16 @@ class AmbianceThread final : public QThread
         bool m_running = false;
 
         ///
-        /// \brief  Sound ambiance that is played while the thread is running.
+        /// \brief  Sound ambience that is played while the thread is running.
         ///
-        std::unique_ptr<Ambiance> m_ambiance;
+        std::unique_ptr<Ambience> m_ambience;
 
     public:
         ///
         /// \brief  Create the thread.
-        /// \param  model   Model of the ambiance to generate.
+        /// \param  model   Model of the ambience to generate.
         ///
-        AmbianceThread(const AmbianceModel& model);
+        AmbienceThread(const AmbienceModel& model);
 
         ///
         /// \brief  Stop the thread.
@@ -44,4 +44,4 @@ class AmbianceThread final : public QThread
         virtual void run() final;
 };
 
-#endif // AMBIANCETHREAD_H
+#endif // AMBIENCETHREAD_H

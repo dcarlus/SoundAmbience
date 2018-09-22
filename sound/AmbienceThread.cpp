@@ -1,26 +1,26 @@
-#include "AmbianceThread.h"
+#include "AmbienceThread.h"
 #include "AppStrings.h"
 #include <QRandomGenerator>
 #include <QDebug>
 
-AmbianceThread::AmbianceThread(const AmbianceModel& model)
+AmbienceThread::AmbienceThread(const AmbienceModel& model)
 {
-    m_ambiance = std::make_unique<Ambiance>(model);
+    m_ambience = std::make_unique<Ambience>(model);
 }
 
-void AmbianceThread::stop()
+void AmbienceThread::stop()
 {
     m_running = false;
 }
 
-void AmbianceThread::run()
+void AmbienceThread::run()
 {
     m_running = true;
-    m_ambiance -> playMainLoopSound();
+    m_ambience -> playMainLoopSound();
 
-    while (m_ambiance -> isPlaying() && m_running)
+    while (m_ambience -> isPlaying() && m_running)
     {
-        m_ambiance -> playAdditionalSound();
+        m_ambience -> playAdditionalSound();
 
         if (alGetError() != AL_NO_ERROR)
         {

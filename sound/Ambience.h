@@ -1,8 +1,8 @@
-#ifndef AMBIANCE_H
-#define AMBIANCE_H
+#ifndef AMBIENCE_H
+#define AMBIENCE_H
 
 #include "OpenAL.h"
-#include "model/AmbianceModel.h"
+#include "model/AmbienceModel.h"
 #include "SoundSource.h"
 #include "Sound.h"
 
@@ -11,13 +11,13 @@
 #include <memory>
 
 ///
-/// \brief  Sound ambiance.
+/// \brief  Sound ambience.
 ///
-class Ambiance final
+class Ambience final
 {
     private:
         ///
-        /// \brief  Ambiance is playing if true; stopped if false.
+        /// \brief  Ambience is playing if true; stopped if false.
         ///
         bool m_isPlaying = false;
 
@@ -44,13 +44,13 @@ class Ambiance final
 
     public:
         ///
-        /// \brief  Create a new sound ambiance.
+        /// \brief  Create a new sound ambience.
         /// \param  model   Model containing all the paths to sound files.
         ///
-        Ambiance(const AmbianceModel& model);
+        Ambience(const AmbienceModel& model);
 
         ///
-        /// \brief  Play the main loop of the sound ambiance.
+        /// \brief  Play the main loop of the sound ambience.
         ///
         void playMainLoopSound();
 
@@ -60,12 +60,12 @@ class Ambiance final
         void playAdditionalSound();
 
         ///
-        /// \brief  Stop the sound ambiance.
+        /// \brief  Stop the sound ambience.
         ///
         void stop();
 
         ///
-        /// \brief  Check if the sound ambiance is playing.
+        /// \brief  Check if the sound ambience is playing.
         ///
         bool isPlaying() const;
 
@@ -76,4 +76,4 @@ class Ambiance final
         void restorePlayedSounds();
 };
 
-#endif // AMBIANCE_H
+#endif // AMBIENCE_H

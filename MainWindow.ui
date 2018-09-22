@@ -17,11 +17,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Sound Ambiance</string>
+   <string>Sound Ambience</string>
   </property>
   <property name="windowIcon">
    <iconset resource="icons.qrc">
-    <normaloff>:/resources/icons/SoundAmbiance_Logo.png</normaloff>:/resources/icons/SoundAmbiance_Logo.png</iconset>
+    <normaloff>:/resources/icons/SoundAmbience_Logo.png</normaloff>:/resources/icons/SoundAmbience_Logo.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -258,7 +258,7 @@
        <item>
         <widget class="QPushButton" name="generateButton">
          <property name="text">
-          <string>Generate ambiance</string>
+          <string>Generate ambience</string>
          </property>
         </widget>
        </item>
@@ -280,8 +280,8 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionNew_ambiance"/>
-    <addaction name="actionLoad_ambiance"/>
+    <addaction name="actionNew_ambience"/>
+    <addaction name="actionLoad_ambience"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
     <addaction name="separator"/>
@@ -294,20 +294,20 @@
     <addaction name="actionAdd_a_sound"/>
     <addaction name="separator"/>
     <addaction name="actionClear_sounds"/>
-    <addaction name="actionGenerate_ambiance"/>
+    <addaction name="actionGenerate_ambience"/>
    </widget>
    <widget class="QMenu" name="menu">
     <property name="title">
      <string>?</string>
     </property>
-    <addaction name="actionAbout_SoundAmbiance"/>
+    <addaction name="actionAbout_SoundAmbience"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionNew_ambiance">
+  <action name="actionNew_ambience">
    <property name="text">
     <string>&amp;New</string>
    </property>
@@ -318,7 +318,7 @@
     <string>Ctrl+N</string>
    </property>
   </action>
-  <action name="actionLoad_ambiance">
+  <action name="actionLoad_ambience">
    <property name="text">
     <string>&amp;Open</string>
    </property>
@@ -355,9 +355,9 @@
     <string>&amp;Clear sounds</string>
    </property>
   </action>
-  <action name="actionGenerate_ambiance">
+  <action name="actionGenerate_ambience">
    <property name="text">
-    <string>&amp;Generate ambiance</string>
+    <string>&amp;Generate ambience</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
@@ -368,9 +368,9 @@
     <string>&amp;Add a sound</string>
    </property>
   </action>
-  <action name="actionAbout_SoundAmbiance">
+  <action name="actionAbout_SoundAmbience">
    <property name="text">
-    <string>&amp;About SoundAmbiance</string>
+    <string>&amp;About SoundAmbience</string>
    </property>
   </action>
   <action name="actionCreate_a_group">
