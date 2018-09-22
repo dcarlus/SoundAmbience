@@ -9,6 +9,8 @@ SoundSource::SoundSource(const QString& soundPath)
 
     // Attach the sound buffer to the source.
     alSourcei(m_source, AL_BUFFER, m_sound -> buffer());
+    alSourcei(m_source, AL_SOURCE_RELATIVE, AL_TRUE);
+    alSource3f(m_source, AL_POSITION, 0.0f, 0.0f, 0.0f);
 }
 
 SoundSource::SoundSource(const SoundSourceParameters& params)
