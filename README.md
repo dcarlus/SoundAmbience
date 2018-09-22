@@ -1,12 +1,12 @@
 # Sound Ambience
 Sound Ambience is a software that generates a sound atmosphere all around you. You put the sound files you want into the software and that's it!
 
-Demos:
+![Sound Ambience v0.1a](https://raw.githubusercontent.com/dcarlus/SoundAmbience/master/resources/screenshots/SoundAmbiance_0.1a.png)
+
+## Demos
 - https://youtu.be/xl3wGDBEMk8
 - https://youtu.be/k9xslkX4UZU
 - https://youtu.be/HSMKXNJMlnw
-
-![Sound Ambience v0.1a](https://raw.githubusercontent.com/dcarlus/SoundAmbience/master/resources/screenshots/SoundAmbiance_0.1a.png)
 
 ## How does it work?
 You select a sound that will be the base of your ambience. This sound is ideally long enough because it will loop other again and again until you stop the ambiance generation.
