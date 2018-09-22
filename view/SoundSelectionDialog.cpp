@@ -3,6 +3,6 @@
 SoundSelectionDialog::SoundSelectionDialog(QWidget* parent)
     : QFileDialog(parent)
 {
-    setNameFilter(tr("Sound (*.wav *.mp3 *.ogg)"));
+    setNameFilter(tr("Sound (*.wav *.ogg)"));
     setViewMode(QFileDialog::Detail);
 }

@@ -1,9 +1,11 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 #include "SoundSelectionDialog.h"
+#include "sound/Ambiance.h"
 #include "AppStrings.h"
+#include <QFuture>
+#include <QtConcurrent/QtConcurrent>
 #include <QDebug>
-
 
 MainWindow::MainWindow(QWidget* parent) :
     QMainWindow(parent),
@@ -11,6 +13,7 @@ MainWindow::MainWindow(QWidget* parent) :
 {
     ui -> setupUi(this);
     ui -> soundLoopPathLabel -> setText(Strings::MainWindow_NoSelectedFile);
+    ui -> generateButton -> setDisabled(true);
 
     makeConnections();
 }
@@ -18,6 +21,11 @@ MainWindow::MainWindow(QWidget* parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::closeEvent(QCloseEvent*)
+{
+    stopAmbianceThread();
 }
 
 void MainWindow::updateSoundList()
@@ -56,6 +64,7 @@ void MainWindow::makeConnections()
             m_model.defineMainSoundLoopPath(fileNames[0]);
             ui -> soundLoopPathLabel -> setText(m_model.mainSoundLoopPath());
 
+            ui -> generateButton -> setDisabled(false);
         }
     );
 
@@ -68,6 +77,8 @@ void MainWindow::makeConnections()
         {
             m_model.clearMainSoundLoopPath();
             ui -> soundLoopPathLabel -> setText(Strings::MainWindow_NoSelectedFile);
+
+            ui -> generateButton -> setDisabled(true);
         }
     );
 
@@ -121,6 +132,33 @@ void MainWindow::makeConnections()
 
             ui -> soundLoopPathLabel -> setText(Strings::MainWindow_NoSelectedFile);
             updateSoundList();
+
+            ui -> generateButton -> setDisabled(true);
         }
     );
+
+    // Generate ambiance.
+    connect
+    (
+        ui -> generateButton,
+        &QPushButton::clicked,
+        [=](bool)
+        {
+            stopAmbianceThread();
+
+            m_thread = std::make_unique<AmbianceThread>(m_model);
+            m_thread -> start();
+
+            ui -> generateButton -> setDisabled(true);
+        }
+    );
+}
+
+void MainWindow::stopAmbianceThread()
+{
+    if (m_thread)
+    {
+        m_thread -> stop();
+        m_thread -> wait();
+    }
 }
