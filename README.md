@@ -14,6 +14,10 @@ Then you select a list of small sounds that are randomly played in a 3D space, a
 
 Notice that the additional sounds should be in mono format. Otherwise, you could not experiment surrounding sounds! :wink:
 
+## Issues
+### The sounds are cracking when played by Sound Ambience (but not with another sound player).
+It occurs when sounds are saturated. You should limit your sound of a couple of dB, for example using Audacity.
+
 ## How to build it?
 For now, Sound Ambience can only be compiled on Windows systems. In the future, it should be available on Linux systems.
 
