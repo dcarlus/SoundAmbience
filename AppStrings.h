@@ -6,6 +6,8 @@
 namespace Strings
 {
     extern const QString MainWindow_NoSelectedFile ;
+    extern const QString MainWindow_SaveAmbience;
+    extern const QString MainWindow_AmbienceProjectFile;
 
     extern const QString OpenAL_ErrorDeviceInit ;
     extern const QString OpenAL_ErrorContextInit;

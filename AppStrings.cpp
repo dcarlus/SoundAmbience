@@ -4,6 +4,8 @@
 namespace Strings
 {
     const QString MainWindow_NoSelectedFile = QObject::tr(u8"No selected file...") ;
+    const QString MainWindow_SaveAmbience = QObject::tr(u8"Save ambience") ;
+    const QString MainWindow_AmbienceProjectFile = QObject::tr(u8"Ambience project (*.ap)") ;
 
     const QString OpenAL_ErrorDeviceInit = QObject::tr(u8"Unable to initialize OpenAL device.");
     const QString OpenAL_ErrorContextInit = QObject::tr(u8"Unable to initialize OpenAL context.");

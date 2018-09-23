@@ -1,16 +1,22 @@
 #ifndef MODELAMBIENCEMODEL_H
 #define MODELAMBIENCEMODEL_H
 
+#include "interfaces/ISerializable.h"
 #include <QString>
-#include <QStringList>
+#include <QVector>
 
 ///
 /// \brief  A very simple model implementation bypassing all sugar required by
 ///         Qt because it is quite boring for just some strings!
 ///
-class AmbienceModel final
+class AmbienceModel final : public ISerializable
 {
     private:
+        ///
+        /// \brief  Path to the project of the ambience.
+        ///
+        QString m_projectPath;
+
         ///
         /// \brief  Path to the main sound loop file.
         ///
@@ -19,9 +25,27 @@ class AmbienceModel final
         ///
         /// \brief  Paths to additional sounds that can be randomly played.
         ///
-        QStringList m_additionalSoundPaths;
+        QVector<QString> m_additionalSoundPaths;
 
     public:
+        ///
+        /// \brief  Load data from a file.
+        /// \param  path    Path to the file.
+        ///
+        virtual void load(const QString& path) final;
+
+        ///
+        /// \brief  Save data to a file.
+        /// \param  path    Path to the file.
+        ///
+        virtual void save(const QString& path) final;
+
+        ///
+        /// \brief  Get the path of the project on disk.
+        /// \return Path of the project if saved on disk.
+        ///
+        QString projectPath() const { return m_projectPath; }
+
         ///
         /// \brief  Set the path to the main sound loop file.
         /// \param  path    Path to the main sound loop file.
@@ -64,7 +88,7 @@ class AmbienceModel final
         /// \brief  Get the list of additional sound paths.
         /// \return List of additional sound paths.
         ///
-        const QStringList& additionalSounds() const { return m_additionalSoundPaths; }
+        const QVector<QString>& additionalSounds() const { return m_additionalSoundPaths; }
 };
 
 #endif // MODELAMBIENCEMODEL_H

@@ -16,7 +16,7 @@ class Ambience;
 ///
 /// \brief  The main window of the application.
 ///
-class MainWindow : public QMainWindow
+class MainWindow final : public QMainWindow
 {
     Q_OBJECT
 
@@ -69,6 +69,57 @@ class MainWindow : public QMainWindow
         /// \brief  Properly stop the sound ambience thread.
         ///
         void stopAmbienceThread();
+
+        ///
+        /// \brief  Make UI element that allow the sound generation available
+        ///         or not.
+        /// \param  available   true to make UI available; false otherwise.
+        ///
+        void makeGenerationUIAvailable(const bool available);
+
+    private slots:
+        ///
+        /// \brief  Callback to save the current project.
+        ///
+        void saveProject(const bool);
+
+        ///
+        /// \brief  Callback to save the current project.
+        ///
+        void saveProjectAs(const bool);
+
+
+        ///
+        /// \brief  Callback to set the main loop sound.
+        ///
+        void setMainLoopSound(const bool);
+
+        ///
+        /// \brief  Callback to reset the main loop sound.
+        ///
+        void resetMainLoopSound(const bool);
+
+
+        ///
+        /// \brief  Callback to add sounds.
+        ///
+        void addSounds(const bool);
+
+        ///
+        /// \brief  Callback to remove sounds.
+        ///
+        void removeSound(const bool);
+
+        ///
+        /// \brief  Callback to clear all sounds.
+        ///
+        void clearSounds(const bool);
+
+
+        ///
+        /// \brief  Callback to generate the ambience.
+        ///
+        void generateAmbience(const bool);
 };
 
 #endif // MAINWINDOW_H

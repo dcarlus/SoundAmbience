@@ -32,8 +32,12 @@ win32 {
         LIBS += -L$$PWD/../lib/libsndfile/lib/Win64/ -llibsndfile-1
     }
 
-    INCLUDEPATH += $$PWD/../lib/OpenAL/include $$PWD/../lib/libsndfile/include
-    DEPENDPATH += $$PWD/../lib/OpenAL/include $$PWD/../lib/libsndfile/include
+    INCLUDEPATH += $$PWD/../lib/OpenAL/include \
+                    $$PWD/../lib/libsndfile/include \
+                    $$PWD/../lib/FlatBuffers/include
+    DEPENDPATH += $$PWD/../lib/OpenAL/include \
+                    $$PWD/../lib/libsndfile/include \
+                    $$PWD/../lib/FlatBuffers/include
 }
 
 
@@ -47,7 +51,9 @@ SOURCES += \
     sound/SoundSource.cpp \
     sound/Ambience.cpp \
     sound/AmbienceThread.cpp \
-    model/AmbienceModel.cpp
+    model/AmbienceModel.cpp \
+    view/MainWindowSlots.cpp \
+    view/ProjectSelectionDialog.cpp
 
 HEADERS += \
     AppStrings.h \
@@ -59,10 +65,16 @@ HEADERS += \
     sound/SoundSourceParameters.h \
     sound/Ambience.h \
     sound/AmbienceThread.h \
-    model/AmbienceModel.h
+    model/AmbienceModel.h \
+    model/AmbienceSchema_generated.h \
+    interfaces/ISerializable.h \
+    view/ProjectSelectionDialog.h
 
 FORMS += \
     MainWindow.ui
 
 RESOURCES += \
     icons.qrc
+
+DISTFILES += \
+    model/AmbienceSchema.fbs

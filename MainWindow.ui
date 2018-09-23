@@ -291,7 +291,7 @@
     <property name="title">
      <string>Edit</string>
     </property>
-    <addaction name="actionAdd_a_sound"/>
+    <addaction name="actionAdd_sounds"/>
     <addaction name="separator"/>
     <addaction name="actionClear_sounds"/>
     <addaction name="actionGenerate_ambience"/>
@@ -363,9 +363,9 @@
     <string>Ctrl+G</string>
    </property>
   </action>
-  <action name="actionAdd_a_sound">
+  <action name="actionAdd_sounds">
    <property name="text">
-    <string>&amp;Add a sound</string>
+    <string>&amp;Add sounds</string>
    </property>
   </action>
   <action name="actionAbout_SoundAmbience">

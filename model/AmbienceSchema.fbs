@@ -1,0 +1,8 @@
+// FlatBuffer Schema of the ambience data model
+
+table AmbienceData {
+    mainSoundLoopPath:string;
+    additionalSoundPaths:[string];
+}
+
+root_type AmbienceData;

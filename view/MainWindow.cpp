@@ -1,10 +1,9 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "ProjectSelectionDialog.h"
 #include "SoundSelectionDialog.h"
 #include "sound/Ambience.h"
 #include "AppStrings.h"
-#include <QFuture>
-#include <QtConcurrent/QtConcurrent>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget* parent) :
@@ -13,7 +12,8 @@ MainWindow::MainWindow(QWidget* parent) :
 {
     ui -> setupUi(this);
     ui -> soundLoopPathLabel -> setText(Strings::MainWindow_NoSelectedFile);
-    ui -> generateButton -> setDisabled(true);
+
+    makeGenerationUIAvailable(false);
 
     makeConnections();
 }
@@ -31,7 +31,7 @@ void MainWindow::closeEvent(QCloseEvent*)
 void MainWindow::updateSoundList()
 {
     ui -> additionalSoundsListWidget -> clear();
-    const QStringList& additionalSounds = m_model.additionalSounds();
+    const QVector<QString>& additionalSounds = m_model.additionalSounds();
     for (QString sound : additionalSounds)
     {
         ui -> additionalSoundsListWidget -> addItem(sound);
@@ -40,117 +40,99 @@ void MainWindow::updateSoundList()
 
 void MainWindow::makeConnections()
 {
+    // Save project.
+    connect
+    (
+        ui -> actionSave,
+        SIGNAL(triggered(bool)),
+        this,
+        SLOT(saveProject(bool))
+    );
+
+    connect
+    (
+        ui -> actionSave_As,
+        SIGNAL(triggered(bool)),
+        this,
+        SLOT(saveProjectAs(bool))
+    );
+
     // Set main loop sound.
     connect
     (
         ui -> soundLoopBrowseButton,
-        &QPushButton::clicked,
-        [=](bool)
-        {
-            SoundSelectionDialog dialog(this);
-
-            QStringList fileNames;
-            if (dialog.exec())
-            {
-                fileNames = dialog.selectedFiles();
-            }
-
-            if (fileNames.size() == 0)
-            {
-                return;
-            }
-
-            Q_ASSERT(fileNames.size() == 1) ;
-            m_model.defineMainSoundLoopPath(fileNames[0]);
-            ui -> soundLoopPathLabel -> setText(m_model.mainSoundLoopPath());
-
-            ui -> generateButton -> setDisabled(false);
-        }
+        SIGNAL(clicked(bool)),
+        this,
+        SLOT(setMainLoopSound(bool))
     );
 
     // Reset main loop sound.
     connect
     (
         ui -> soundLoopRemoveButton,
-        &QPushButton::clicked,
-        [=](bool)
-        {
-            m_model.clearMainSoundLoopPath();
-            ui -> soundLoopPathLabel -> setText(Strings::MainWindow_NoSelectedFile);
-
-            ui -> generateButton -> setDisabled(true);
-        }
+        SIGNAL(clicked(bool)),
+        this,
+        SLOT(resetMainLoopSound(bool))
     );
 
     // Add sounds.
     connect
     (
         ui -> addSoundsButton,
-        &QPushButton::clicked,
-        [=](bool)
-        {
-            SoundSelectionDialog dialog(this);
-            dialog.setFileMode(QFileDialog::ExistingFiles);
+        SIGNAL(clicked(bool)),
+        this,
+        SLOT(addSounds(bool))
+    );
 
-            QStringList fileNames;
-            if (dialog.exec())
-            {
-                fileNames = dialog.selectedFiles();
-            }
-
-            for (QString path : fileNames)
-            {
-                m_model.addAdditionalSoundPath(path);
-            }
-
-            updateSoundList();
-        }
+    connect
+    (
+        ui -> actionAdd_sounds,
+        SIGNAL(triggered(bool)),
+        this,
+        SLOT(addSounds(bool))
     );
 
     // Remove a sound.
     connect
     (
         ui -> removeSoundButton,
-        &QPushButton::clicked,
-        [=](bool)
-        {
-            int selection = ui -> additionalSoundsListWidget -> currentRow();
-            m_model.removeAdditionalSoundPath(selection);
-            updateSoundList();
-        }
+        SIGNAL(clicked(bool)),
+        this,
+        SLOT(removeSound(bool))
     );
 
     // Clear all sounds.
     connect
     (
         ui -> clearButton,
-        &QPushButton::clicked,
-        [=](bool)
-        {
-            m_model.clearMainSoundLoopPath();
-            m_model.clearAdditionalSoundPaths();
+        SIGNAL(clicked(bool)),
+        this,
+        SLOT(clearSounds(bool))
+    );
 
-            ui -> soundLoopPathLabel -> setText(Strings::MainWindow_NoSelectedFile);
-            updateSoundList();
-
-            ui -> generateButton -> setDisabled(true);
-        }
+    connect
+    (
+        ui -> actionClear_sounds,
+        SIGNAL(triggered(bool)),
+        this,
+        SLOT(clearSounds(bool))
     );
 
     // Generate ambience.
     connect
     (
         ui -> generateButton,
-        &QPushButton::clicked,
-        [=](bool)
-        {
-            stopAmbienceThread();
+        SIGNAL(clicked(bool)),
+        this,
+        SLOT(generateAmbience(bool))
+    );
 
-            m_thread = std::make_unique<AmbienceThread>(m_model);
-            m_thread -> start();
-
-            ui -> generateButton -> setDisabled(true);
-        }
+    connect
+    (
+        ui -> actionGenerate_ambience,
+        SIGNAL(triggered(bool)),
+        this,
+        SLOT(generateAmbience(bool))
     );
 }
 
@@ -160,5 +142,45 @@ void MainWindow::stopAmbienceThread()
     {
         m_thread -> stop();
         m_thread -> wait();
+    }
+}
+
+void MainWindow::makeGenerationUIAvailable(const bool available)
+{
+    ui -> generateButton -> setEnabled(available);
+    ui -> actionGenerate_ambience -> setEnabled(available);
+
+    ui -> actionSave -> setEnabled(available);
+    ui -> actionSave_As -> setEnabled(available);
+}
+
+#include "MainWindowSlots.cpp"
+
+
+void MainWindow::saveProject(const bool)
+{
+    if (!m_model.projectPath().isEmpty())
+    {
+        m_model.save(m_model.projectPath());
+    }
+    else
+    {
+        saveProjectAs(false);
+    }
+}
+
+void MainWindow::saveProjectAs(const bool)
+{
+    QString fileName = QFileDialog::getSaveFileName
+    (
+        this,
+        Strings::MainWindow_SaveAmbience,
+        QString(),
+        Strings::MainWindow_AmbienceProjectFile
+    );
+
+    if (!fileName.isEmpty())
+    {
+        m_model.save(fileName);
     }
 }
