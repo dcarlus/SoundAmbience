@@ -26,3 +26,8 @@ Requirements:
 - OpenAL 1.1 https://www.openal.org/
 - libsndfile http://www.mega-nerd.com/libsndfile/
 - flatbuffers https://google.github.io/flatbuffers/
+
+## What's next?
+In version 2.0, Sound Ambience will allow you to add parameters on sounds: frequency, pitch range, distance, etc. You will be able to finely control your ambience generation while you will add more randomness to it!
+
+**Stay tuned!** :wink:
