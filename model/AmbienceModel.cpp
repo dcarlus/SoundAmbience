@@ -2,10 +2,24 @@
 #include "AmbienceSchema_generated.h"
 #include <QFile>
 #include <QDataStream>
+#include <QDebug>
 
-void AmbienceModel::load(const QString&)
+void AmbienceModel::load(const QString& path)
 {
+    // Read the binary file.
+    QFile file(path);
+    file.open(QIODevice::ReadOnly);
+    QByteArray blob = file.readAll();
+    file.close();
 
+    auto data = GetAmbienceData(blob.data());
+    m_mainSoundLoopPath = QString::fromStdString(data -> mainSoundLoopPath() -> str());
+
+    for (auto path : (*(data -> additionalSoundPaths())))
+    {
+        QString soundPath = QString::fromStdString(path -> str());
+        m_additionalSoundPaths.append(soundPath);
+    }
 }
 
 void AmbienceModel::save(const QString& path)
@@ -24,7 +38,11 @@ void AmbienceModel::save(const QString& path)
     }
 
     auto mainLoop = builder.CreateString(m_mainSoundLoopPath.toStdString());
-    auto additionalSounds = builder.CreateVector(fbAdditionalSounds.data(), fbAdditionalSounds.size());
+    auto additionalSounds = builder.CreateVector
+    (
+        fbAdditionalSounds.data(),
+        fbAdditionalSounds.size()
+    );
     auto data = CreateAmbienceData(builder, mainLoop, additionalSounds);
 
     // Make the buffer ready to be written on disk.
@@ -37,8 +55,7 @@ void AmbienceModel::save(const QString& path)
     // Write the binary file.
     QFile file(path);
     file.open(QIODevice::WriteOnly);
-    QDataStream out(&file);
-    out.writeBytes(buffer, bufferSize);
+    file.write(buffer, bufferSize);
     file.close();
 
     m_projectPath = path;

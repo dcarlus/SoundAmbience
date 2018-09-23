@@ -40,6 +40,15 @@ void MainWindow::updateSoundList()
 
 void MainWindow::makeConnections()
 {
+    // Open project.
+    connect
+    (
+        ui -> actionLoad_ambience,
+        SIGNAL(triggered(bool)),
+        this,
+        SLOT(openProject(bool))
+    );
+
     // Save project.
     connect
     (
@@ -156,6 +165,28 @@ void MainWindow::makeGenerationUIAvailable(const bool available)
 
 #include "MainWindowSlots.cpp"
 
+
+void MainWindow::openProject(const bool)
+{
+    QString fileName = QFileDialog::getOpenFileName
+    (
+        this,
+        Strings::MainWindow_LoadAmbience,
+        QString(),
+        Strings::MainWindow_AmbienceProjectFile
+    );
+
+    if (fileName.isEmpty())
+    {
+        return;
+    }
+
+    m_model.load(fileName);
+    makeGenerationUIAvailable(!m_model.mainSoundLoopPath().isEmpty());
+
+    ui -> soundLoopPathLabel -> setText(m_model.mainSoundLoopPath());
+    updateSoundList();
+}
 
 void MainWindow::saveProject(const bool)
 {
