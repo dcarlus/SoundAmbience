@@ -79,6 +79,11 @@ class MainWindow final : public QMainWindow
 
     private slots:
         ///
+        /// \brief  Callback to create a new project.
+        ///
+        void newProject(const bool);
+
+        ///
         /// \brief  Callback to open a project.
         ///
         void openProject(const bool);
@@ -92,6 +97,11 @@ class MainWindow final : public QMainWindow
         /// \brief  Callback to save the current project.
         ///
         void saveProjectAs(const bool);
+
+        ///
+        /// \brief  Callback to close the application.
+        ///
+        void quitApp(const bool);
 
 
         ///

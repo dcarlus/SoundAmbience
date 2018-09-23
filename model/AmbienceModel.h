@@ -47,6 +47,11 @@ class AmbienceModel final : public ISerializable
         QString projectPath() const { return m_projectPath; }
 
         ///
+        /// \brief  Clear the whole project.
+        ///
+        void clearProject();
+
+        ///
         /// \brief  Set the path to the main sound loop file.
         /// \param  path    Path to the main sound loop file.
         /// \return true if the path is valid; false otherwise.

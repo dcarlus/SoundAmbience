@@ -61,6 +61,13 @@ void AmbienceModel::save(const QString& path)
     m_projectPath = path;
 }
 
+void AmbienceModel::clearProject()
+{
+    m_projectPath = QString();
+    clearMainSoundLoopPath();
+    clearAdditionalSoundPaths();
+}
+
 bool AmbienceModel::defineMainSoundLoopPath(const QString& path)
 {
     bool validPath = !path.isEmpty() && !m_additionalSoundPaths.contains(path);

@@ -40,6 +40,15 @@ void MainWindow::updateSoundList()
 
 void MainWindow::makeConnections()
 {
+    // New project.
+    connect
+    (
+        ui -> actionNew_ambience,
+        SIGNAL(triggered(bool)),
+        this,
+        SLOT(newProject(bool))
+    );
+
     // Open project.
     connect
     (
@@ -64,6 +73,15 @@ void MainWindow::makeConnections()
         SIGNAL(triggered(bool)),
         this,
         SLOT(saveProjectAs(bool))
+    );
+
+    // Quit application.
+    connect
+    (
+        ui -> actionQuit,
+        SIGNAL(triggered(bool)),
+        this,
+        SLOT(quitApp(bool))
     );
 
     // Set main loop sound.
@@ -166,6 +184,15 @@ void MainWindow::makeGenerationUIAvailable(const bool available)
 #include "MainWindowSlots.cpp"
 
 
+void MainWindow::newProject(const bool)
+{
+    m_model.clearProject();
+
+    ui -> soundLoopPathLabel -> setText(Strings::MainWindow_NoSelectedFile);
+    updateSoundList();
+    makeGenerationUIAvailable(false);
+}
+
 void MainWindow::openProject(const bool)
 {
     QString fileName = QFileDialog::getOpenFileName
@@ -214,4 +241,9 @@ void MainWindow::saveProjectAs(const bool)
     {
         m_model.save(fileName);
     }
+}
+
+void MainWindow::quitApp(const bool)
+{
+    QApplication::quit();
 }
