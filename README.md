@@ -21,3 +21,4 @@ Requirements:
 - Qt5.10 https://www.qt.io/
 - OpenAL 1.1 https://www.openal.org/
 - libsndfile http://www.mega-nerd.com/libsndfile/
+- flatbuffers https://google.github.io/flatbuffers/
