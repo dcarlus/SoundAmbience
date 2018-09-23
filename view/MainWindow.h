@@ -12,6 +12,7 @@ namespace Ui {
 
 class Ambience;
 class PlayingAmbienceDialog;
+class AboutDialog;
 
 ///
 /// \brief  The main window of the application.
@@ -30,6 +31,11 @@ class MainWindow final : public QMainWindow
         /// \brief  Dialog that is visible when the ambience is playing.
         ///
         PlayingAmbienceDialog* m_playingDialog = nullptr;
+
+        ///
+        /// \brief  About dialog box.
+        ///
+        AboutDialog* m_aboutDialog = nullptr;
 
         ///
         /// \brief  Model of the sound ambience.
@@ -124,6 +130,12 @@ class MainWindow final : public QMainWindow
         /// \brief  Callback to generate the ambience.
         ///
         void generateAmbience(const bool);
+
+
+        ///
+        /// \brief  Callback to show the about dialog box.
+        ///
+        void showAboutDialog(const bool);
 };
 
 #endif // MAINWINDOW_H

@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "AboutDialog.h"
 #include "PlayingAmbienceDialog.h"
 #include "ProjectSelectionDialog.h"
 #include "SoundSelectionDialog.h"
@@ -14,8 +15,9 @@ MainWindow::MainWindow(QWidget* parent) :
     ui -> setupUi(this);
     ui -> soundLoopPathLabel -> setText(Strings::MainWindow_NoSelectedFile);
 
-    makeGenerationUIAvailable(false);
+    m_aboutDialog = new AboutDialog(this);
 
+    makeGenerationUIAvailable(false);
     makeConnections();
 }
 
@@ -156,6 +158,15 @@ void MainWindow::makeConnections()
         SIGNAL(triggered(bool)),
         this,
         SLOT(generateAmbience(bool))
+    );
+
+    // Show about box.
+    connect
+    (
+        ui -> actionAbout_SoundAmbience,
+        SIGNAL(triggered(bool)),
+        this,
+        SLOT(showAboutDialog(bool))
     );
 }
 

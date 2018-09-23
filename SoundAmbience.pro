@@ -54,7 +54,8 @@ SOURCES += \
     model/AmbienceModel.cpp \
     view/MainWindowSlots.cpp \
     view/ProjectSelectionDialog.cpp \
-    view/PlayingAmbienceDialog.cpp
+    view/PlayingAmbienceDialog.cpp \
+    view/AboutDialog.cpp
 
 HEADERS += \
     AppStrings.h \
@@ -70,11 +71,13 @@ HEADERS += \
     model/AmbienceSchema_generated.h \
     interfaces/ISerializable.h \
     view/ProjectSelectionDialog.h \
-    view/PlayingAmbienceDialog.h
+    view/PlayingAmbienceDialog.h \
+    view/AboutDialog.h
 
 FORMS += \
     MainWindow.ui \
-    PlayingAmbienceDialog.ui
+    PlayingAmbienceDialog.ui \
+    AboutDialog.ui
 
 RESOURCES += \
     icons.qrc

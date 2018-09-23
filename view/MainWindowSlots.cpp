@@ -138,3 +138,8 @@ void MainWindow::generateAmbience(const bool)
 
     hide();
 }
+
+void MainWindow::showAboutDialog(const bool)
+{
+    m_aboutDialog -> show();
+}
