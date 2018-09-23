@@ -9,6 +9,8 @@ void MainWindow::newProject(const bool)
 
 void MainWindow::openProject(const bool)
 {
+    newProject(false);
+
     QString fileName = QFileDialog::getOpenFileName
     (
         this,
@@ -131,10 +133,8 @@ void MainWindow::clearSounds(const bool)
 
 void MainWindow::generateAmbience(const bool)
 {
-    stopAmbienceThread();
+    m_playingDialog = new PlayingAmbienceDialog(m_model, this);
+    m_playingDialog -> show();
 
-    m_thread = std::make_unique<AmbienceThread>(m_model);
-    m_thread -> start();
-
-    makeGenerationUIAvailable(false);
+    hide();
 }

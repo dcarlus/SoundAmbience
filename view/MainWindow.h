@@ -5,13 +5,13 @@
 #include <QListWidgetItem>
 #include <memory>
 #include "model/AmbienceModel.h"
-#include "sound/AmbienceThread.h"
 
 namespace Ui {
     class MainWindow;
 }
 
 class Ambience;
+class PlayingAmbienceDialog;
 
 ///
 /// \brief  The main window of the application.
@@ -27,14 +27,14 @@ class MainWindow final : public QMainWindow
         Ui::MainWindow* ui;
 
         ///
+        /// \brief  Dialog that is visible when the ambience is playing.
+        ///
+        PlayingAmbienceDialog* m_playingDialog = nullptr;
+
+        ///
         /// \brief  Model of the sound ambience.
         ///
         AmbienceModel m_model ;
-
-        ///
-        /// \brief  Thread in which the sound ambience is played.
-        ///
-        std::unique_ptr<AmbienceThread> m_thread;
 
     public:
         ///
@@ -50,12 +50,6 @@ class MainWindow final : public QMainWindow
 
     private:
         ///
-        /// \brief  Detect when the window is closed.
-        /// \param  event   Close event.
-        ///
-        virtual void closeEvent(QCloseEvent* event) final;
-
-        ///
         /// \brief  Update the sound list.
         ///
         void updateSoundList();
@@ -64,11 +58,6 @@ class MainWindow final : public QMainWindow
         /// \brief  Make the UI connections to logic.
         ///
         void makeConnections();
-
-        ///
-        /// \brief  Properly stop the sound ambience thread.
-        ///
-        void stopAmbienceThread();
 
         ///
         /// \brief  Make UI element that allow the sound generation available

@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "PlayingAmbienceDialog.h"
 #include "ProjectSelectionDialog.h"
 #include "SoundSelectionDialog.h"
 #include "sound/Ambience.h"
@@ -21,11 +22,6 @@ MainWindow::MainWindow(QWidget* parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::closeEvent(QCloseEvent*)
-{
-    stopAmbienceThread();
 }
 
 void MainWindow::updateSoundList()
@@ -161,15 +157,6 @@ void MainWindow::makeConnections()
         this,
         SLOT(generateAmbience(bool))
     );
-}
-
-void MainWindow::stopAmbienceThread()
-{
-    if (m_thread)
-    {
-        m_thread -> stop();
-        m_thread -> wait();
-    }
 }
 
 void MainWindow::makeGenerationUIAvailable(const bool available)

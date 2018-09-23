@@ -53,7 +53,8 @@ SOURCES += \
     sound/AmbienceThread.cpp \
     model/AmbienceModel.cpp \
     view/MainWindowSlots.cpp \
-    view/ProjectSelectionDialog.cpp
+    view/ProjectSelectionDialog.cpp \
+    view/PlayingAmbienceDialog.cpp
 
 HEADERS += \
     AppStrings.h \
@@ -68,10 +69,12 @@ HEADERS += \
     model/AmbienceModel.h \
     model/AmbienceSchema_generated.h \
     interfaces/ISerializable.h \
-    view/ProjectSelectionDialog.h
+    view/ProjectSelectionDialog.h \
+    view/PlayingAmbienceDialog.h
 
 FORMS += \
-    MainWindow.ui
+    MainWindow.ui \
+    PlayingAmbienceDialog.ui
 
 RESOURCES += \
     icons.qrc
