@@ -27,7 +27,7 @@ void MainWindow::openProject(const bool)
     m_model.load(fileName);
     makeGenerationUIAvailable(!m_model.mainSoundLoopPath().isEmpty());
 
-    ui -> soundLoopPathLabel -> setText(m_model.mainSoundLoopPath());
+    elideLabelText(ui -> soundLoopPathLabel, m_model.mainSoundLoopPath());
     updateSoundList();
 }
 
@@ -81,7 +81,7 @@ void MainWindow::setMainLoopSound(const bool)
 
     Q_ASSERT(fileNames.size() == 1) ;
     m_model.defineMainSoundLoopPath(fileNames[0]);
-    ui -> soundLoopPathLabel -> setText(m_model.mainSoundLoopPath());
+    elideLabelText(ui -> soundLoopPathLabel, m_model.mainSoundLoopPath());
 
     makeGenerationUIAvailable(true);
 }

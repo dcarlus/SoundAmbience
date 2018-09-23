@@ -16,6 +16,12 @@
     <height>440</height>
    </size>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>620</width>
+    <height>440</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Sound Ambience</string>
   </property>
@@ -167,7 +173,7 @@
                <x>0</x>
                <y>0</y>
                <width>600</width>
-               <height>302</height>
+               <height>322</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -306,7 +312,6 @@
    <addaction name="menuEdit"/>
    <addaction name="menu"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNew_ambience">
    <property name="text">
     <string>&amp;New</string>

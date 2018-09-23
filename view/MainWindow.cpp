@@ -26,6 +26,14 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::elideLabelText(QLabel* label, const QString& text)
+{
+    QFontMetrics metrics(label -> font());
+    int labelWidth = label -> width() - 2;
+    QString clippedText = metrics.elidedText(text, Qt::ElideMiddle, labelWidth);
+    label -> setText(clippedText);
+}
+
 void MainWindow::updateSoundList()
 {
     ui -> additionalSoundsListWidget -> clear();

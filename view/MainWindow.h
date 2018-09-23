@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLabel>
 #include <QListWidgetItem>
 #include <memory>
 #include "model/AmbienceModel.h"
@@ -55,6 +56,13 @@ class MainWindow final : public QMainWindow
         ~MainWindow();
 
     private:
+        ///
+        /// \brief  Elide the text of a QLabel if too long.
+        /// \param  label   Label for which the text may be too long.
+        /// \param  text    Text to elide in the label if needed.
+        ///
+        void elideLabelText(QLabel* label, const QString& text);
+
         ///
         /// \brief  Update the sound list.
         ///
