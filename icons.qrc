@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>resources/icons/SoundAmbience_Logo.png</file>
+        <file>resources/icons/win/sa_icon.ico</file>
+        <file>resources/icons/win/win.rc</file>
     </qresource>
 </RCC>

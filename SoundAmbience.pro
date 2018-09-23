@@ -38,6 +38,8 @@ win32 {
     DEPENDPATH += $$PWD/../lib/OpenAL/include \
                     $$PWD/../lib/libsndfile/include \
                     $$PWD/../lib/FlatBuffers/include
+
+    RC_FILE = resources/icons/win/win.rc
 }
 
 
