@@ -19,13 +19,19 @@ Notice that the additional sounds should be in mono format. Otherwise, you could
 It occurs when sounds are saturated. You should limit your sound of a couple of dB, for example using Audacity.
 
 ## How to build it?
-For now, Sound Ambience can only be compiled on Windows systems. In the future, it should be available on Linux systems.
-
-Requirements:
+**Requirements:**
 - Qt5.10 https://www.qt.io/
 - OpenAL 1.1 https://www.openal.org/
 - libsndfile http://www.mega-nerd.com/libsndfile/
 - flatbuffers https://google.github.io/flatbuffers/
+
+### GNU/Linux
+Install (or build) these dependencies on your system. Notice that they all are available as official packages on _ArchLinux_ :kiss:.
+
+Then open the SoundAmbience.pro file with QtCreator and build the software from QtCreator. You should be able to get a executable binary. Just hope that all the planets are aligned... :smirk:
+
+### Windows
+Just download the binaries for now... :scream:
 
 ## What's next?
 In version 2.0, Sound Ambience will allow you to add parameters on sounds: frequency, pitch range, distance, etc. You will be able to finely control your ambience generation while you will add more randomness to it!
