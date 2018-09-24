@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>PlayingAmbienceDialog</class>
  <widget class="QDialog" name="PlayingAmbienceDialog">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -16,6 +19,9 @@
   <property name="windowIcon">
    <iconset resource="icons.qrc">
     <normaloff>:/resources/icons/SoundAmbience_Logo.png</normaloff>:/resources/icons/SoundAmbience_Logo.png</iconset>
+  </property>
+  <property name="modal">
+   <bool>false</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

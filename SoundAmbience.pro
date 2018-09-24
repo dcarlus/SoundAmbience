@@ -24,20 +24,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 win32 {
-    contains(QT_ARCH, i386) {
-        LIBS += -L$$PWD/../lib/OpenAL/lib/Win32/ -lOpenAL32
-        LIBS += -L$$PWD/../lib/libsndfile/lib/Win32/ -llibsndfile-1
-    } else {
-        LIBS += -L$$PWD/../lib/OpenAL/lib/Win64/ -lOpenAL32
-        LIBS += -L$$PWD/../lib/libsndfile/lib/Win64/ -llibsndfile-1
-    }
+    LIBS += -L$$PWD/lib/OpenAL/lib/ -lOpenAL32
+    LIBS += -L$$PWD/lib/libsndfile/lib/ -llibsndfile-1
 
-    INCLUDEPATH += $$PWD/../lib/OpenAL/include \
-                    $$PWD/../lib/libsndfile/include \
-                    $$PWD/../lib/FlatBuffers/include
-    DEPENDPATH += $$PWD/../lib/OpenAL/include \
-                    $$PWD/../lib/libsndfile/include \
-                    $$PWD/../lib/FlatBuffers/include
+    INCLUDEPATH += $$PWD/lib/OpenAL/include \
+                    $$PWD/lib/libsndfile/include \
+                    $$PWD/lib/FlatBuffers/include
+    DEPENDPATH += $$PWD/lib/OpenAL/include \
+                    $$PWD/lib/libsndfile/include \
+                    $$PWD/lib/FlatBuffers/include
 
     RC_FILE = resources/icons/win/win.rc
 }
