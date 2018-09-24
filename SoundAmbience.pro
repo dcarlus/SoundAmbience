@@ -42,6 +42,13 @@ win32 {
     RC_FILE = resources/icons/win/win.rc
 }
 
+linux {
+    LIBS += -lopenal -lsndfile -lflatbuffers
+
+    INCLUDEPATH += /usr/include/AL
+    DEPENDPATH += /usr/include/AL
+}
+
 
 SOURCES += \
     main.cpp \
