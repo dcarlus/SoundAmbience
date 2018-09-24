@@ -31,7 +31,7 @@ Install (or build) these dependencies on your system. Notice that they all are a
 Then open the SoundAmbience.pro file with QtCreator and build the software from QtCreator. You should be able to get an executable binary. Just hope that all the planets are aligned... :smirk:
 
 ### Windows
-Just download the binaries for now... :scream:
+To build on Windows, download [**win64_dependencies.zip**](https://github.com/dcarlus/SoundAmbience/releases/download/1.1b/win64_dependencies.zip) and put the _lib_ directory in the source code folder (next to the SoundAmbience.pro file). Then open QtCreator and build. You may have to add a `make install` instruction in your build steps to get a nice binary package with all required DLLs.
 
 ## What's next?
 In version 2.0, Sound Ambience will allow you to add parameters on sounds: frequency, pitch range, distance, etc. You will be able to finely control your ambience generation while you will add more randomness to it!
