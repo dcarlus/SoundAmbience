@@ -35,6 +35,22 @@ win32 {
                     $$PWD/lib/FlatBuffers/include
 
     RC_FILE = resources/icons/win/win.rc
+
+
+    # Install dependency DLLs
+    Release:DESTDIR = $$OUT_PWD/release/$$OUTPUT_DIRNAME
+    Debug:DESTDIR = $$OUT_PWD/debug/$$OUTPUT_DIRNAME
+
+    required_dlls.files += $$PWD/lib/OpenAL/dll/OpenAL32.dll \
+                            $$PWD/lib/libsndfile/dll/libsndfile-1.dll
+    required_dlls.path = $$DESTDIR
+    INSTALLS += required_dlls
+
+    # Run Qt deploy
+    QT_BINARIES = $$dirname(QMAKE_QMAKE)
+    DEPLOY_COMMAND = $$QT_BINARIES/windeployqt.exe
+    DEPLOY_TARGET = $$shell_quote($$shell_path($${DESTDIR}/$${TARGET}.exe))
+    QMAKE_POST_LINK = $${DEPLOY_COMMAND} $${DEPLOY_TARGET}
 }
 
 linux {
