@@ -28,7 +28,7 @@ It occurs when sounds are saturated. You should limit your sound of a couple of 
 ### GNU/Linux
 Install (or build) these dependencies on your system. Notice that they all are available as official packages on _ArchLinux_ :kiss:.
 
-Then open the SoundAmbience.pro file with QtCreator and build the software from QtCreator. You should be able to get a executable binary. Just hope that all the planets are aligned... :smirk:
+Then open the SoundAmbience.pro file with QtCreator and build the software from QtCreator. You should be able to get an executable binary. Just hope that all the planets are aligned... :smirk:
 
 ### Windows
 Just download the binaries for now... :scream:
