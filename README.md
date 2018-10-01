@@ -30,6 +30,34 @@ Install (or build) these dependencies on your system. Notice that they all are a
 
 Then open the SoundAmbience.pro file with QtCreator and build the software from QtCreator. You should be able to get an executable binary. Just hope that all the planets are aligned... :smirk:
 
+#### Building on Ubuntu
+
+1. Install packaged dependencies:
+```
+sudo apt install libopenal-dev libsndfile1-dev
+```
+
+2. Download and install Qt 5.10 or later (**not needed for Ubuntu 18.10 and later**) from [Qt website](https://www.qt.io/download).
+
+3. Build not-yet-packaged dependencies (flatbuffers):
+```
+git clone https://github.com/google/flatbuffers
+cd flatbuffers
+git checkout 20a400e940634108bad812f571582eeffc728eac
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+cd ../..
+```
+
+4. Build program executable (replace **5.11.1** by the Qt version you installed):
+```
+/opt/Qt/5.11.1/gcc_64/bin/qmake .
+make
+```
+
 ### Windows
 To build on Windows, download [**win64_dependencies.zip**](https://github.com/dcarlus/SoundAmbience/releases/download/1.1b/win64_dependencies.zip) and put the _lib_ directory in the source code folder (next to the SoundAmbience.pro file). Then open QtCreator and build. You may have to add a `make install` instruction in your build steps to get a nice binary package with all required DLLs.
 
